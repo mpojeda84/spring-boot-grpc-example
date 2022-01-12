@@ -1,0 +1,29 @@
+syntax = "proto3";
+option java_multiple_files = true;
+package com.demo.backend.service;
+
+message RetrieveUserRequest {
+  int32 id = 1;
+}
+
+message Address {
+  string address1 = 1;
+  string address2 = 2;
+  string city = 3;
+  string state = 4;
+  string zip = 5;
+  string country = 6;
+}
+
+message UserResponse {
+  int32 id = 1;
+  string email = 2;
+  string password = 3;
+  string firstName = 4;
+  string lastName = 5;
+  repeated Address addresses = 6;
+}
+
+service UserService {
+  rpc retrieve(RetrieveUserRequest) returns (UserResponse);
+}
